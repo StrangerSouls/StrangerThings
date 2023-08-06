@@ -13,4 +13,19 @@ File Structre:
 - index.html
 ->src
 -->components
+--- NavBar(Stranger's Things, Home, Profile, Log Out/Register/Log In)
+--- PostsView
+--- Register
+--- Login
+--- Logout
+--- PostsForm
+--- PostsView
+--- DeleteButton
+--- MessagesForm
+--- SearchForm
+-->helpers
+--- logIn/sessionStorage
+--- logOut/sessionStorage
+--- isLoggedIn
+--- makeHeaders
 
