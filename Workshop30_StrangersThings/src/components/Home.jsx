@@ -26,7 +26,13 @@ export default function Home() {
       {posts.map((post) => (
         <div key={post._id}>
           <h2>{post.title}</h2>
-          <p>{post.description}</p>
+			<p>{post.description}</p>
+			<p>{post.price}</p>
+			<p>Location: {post.location}</p>
+			<p>Delivery Available? {post.WillDeliver}</p>
+			
+
+
         </div>
       ))}
     </div>
