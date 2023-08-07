@@ -1,6 +1,7 @@
 import { useState, useEffect} from "react";
+import PropTypes from "prop-types";
 
-export default function SignUpForm({token, setToken}) {
+export default function SignUpForm({ setToken }) {
   const [userName, setUsername] = useState(""); 
   const [password, setPassword] = useState(""); 
   const [error, setError] = useState(null);
@@ -65,4 +66,9 @@ export default function SignUpForm({token, setToken}) {
       </form>
     </div>
   )
+  
 }
+
+SignUpForm.propTypes = {
+	setToken: PropTypes.func.isRequired,
+  };
