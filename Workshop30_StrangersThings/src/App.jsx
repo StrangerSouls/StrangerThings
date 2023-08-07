@@ -1,14 +1,21 @@
 import { Routes, Route } from "react-router-dom"
+import { useState } from "react"
 import Home from './components/Home'
 import SignUpForm from "./components/SignUpForm"
 import Authenticate from "./components/Authenticate"
 
 import './App.css'
 
+
+
 function App() {
-  
+  const [token, setToken] = useState(null);
 
   return (
+    <>
+      <SignUpForm token={token} setToken={setToken} />
+      <Authenticate token={token} setToken={setToken} />
+    
     
     <div id="container" >
       <h1>Team 9 "Craigslist" App</h1>
@@ -21,6 +28,7 @@ function App() {
         </Routes>
       </div>
     </div>
+    </>
        
   )
 }
