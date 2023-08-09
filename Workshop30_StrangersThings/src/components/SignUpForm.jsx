@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { saveTokenSessionStorage } from "../utlities/sessionStorage";
 
 export default function SignUpForm({ setToken }) {
   const [userName, setUsername] = useState("");
@@ -37,7 +38,9 @@ export default function SignUpForm({ setToken }) {
         
         console.log(result);
         if (result && result.data && result.data.token) {
-          setToken(result.data.token);
+          const token = result.data.token
+          setToken(token);
+          saveTokenSessionStorage(token);
         }
         return result;
       } catch (err) {
