@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { BASE_URL } from "../utlities/constants";
+import { saveTokenSessionStorage } from "../auth/sessionStorage";
 
 
 export default function SignUpForm({ setToken }) {
@@ -39,6 +40,7 @@ export default function SignUpForm({ setToken }) {
         if (result && result.data && result.data.token) {
           const token = result.data.token
           setToken(token);
+          saveTokenSessionStorage(token);
          
         }
         return result;
@@ -52,7 +54,7 @@ export default function SignUpForm({ setToken }) {
 
   return (
     <div id="container">
-      <h1>SignUpForm</h1>
+      <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Username:

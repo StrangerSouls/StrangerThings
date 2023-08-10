@@ -2,7 +2,9 @@ import { Routes, Route } from "react-router-dom"
 import { useState } from "react"
 import Home from './components/Home'
 import SignUpForm from "./components/SignUpForm"
+import LogInForm from "./components/LogInForm"
 import NavBar from "./components/NavBar"
+
 
 
 import './App.css'
@@ -10,6 +12,8 @@ import './App.css'
 
 
 function App() {
+  const [, setToken] = useState(null);
+
   return (
     <>
         
@@ -20,8 +24,12 @@ function App() {
       <div id="main-section">
         <Routes>
           <Route path='/' element={<Home />} exact/>
-          <Route path='/signupform' element={<SignUpForm />}/>
-          {/* <Route path='/signin' element={<Authenticate />}/> */}
+          <Route path='/signupform' element={<SignUpForm setToken={setToken}/>}/>
+         
+            <Route
+              path="/login"
+              element={<LogInForm setToken={setToken} />}
+            />
         </Routes>
       </div>
     </div>
