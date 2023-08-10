@@ -8,17 +8,18 @@ import NavBar from "./components/NavBar"
 
 
 import './App.css'
+//import { saveTokenSessionStorage } from "./auth/sessionStorage"
 
 
 
 function App() {
-  const [, setToken] = useState(null);
+  const [token, setToken] = useState( sessionStorage.getItem("authToken") ? sessionStorage.getItem("authToken") : null);
 
   return (
     <>
         
     <div id="container" >
-      <NavBar />
+      <NavBar token={token} setToken={setToken}/>
       <h1>Team 9 Stranger&apos;s Things</h1>
       <div></div>
       <div id="main-section">
