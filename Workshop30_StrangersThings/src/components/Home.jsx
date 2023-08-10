@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
+import { BASE_URL } from '../utlities/constants';
 
 export default function Home() {
-  const COHORT_NAME = '2302-ACC-CT-WEB-PT-B';
-  const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
-
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {

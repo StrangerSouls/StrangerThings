@@ -19,7 +19,7 @@ function App() {
         
     <div id="container" >
       <NavBar />
-      <h1>Team 9 Stranger's Things</h1>
+      <h1>Team 9 Stranger&apos;s Things</h1>
       <div></div>
       <div id="main-section">
         <Routes>
