@@ -1,16 +1,15 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { saveTokenSessionStorage } from "../utlities/sessionStorage";
+import { saveTokenSessionStorage } from "../auth/sessionStorage";
+import { BASE_URL } from "../utlities/constants";
 
 export default function SignUpForm({ setToken }) {
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState(""); // New state for password confirmation
+  const [confirmPassword, setConfirmPassword] = useState(""); 
   const [error, setError] = useState(null);
 
-  const COHORT_NAME = '2302-ACC-CT-WEB-PT-B';
-  const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
-
+ 
   async function handleSubmit(event) {
     event.preventDefault();
 

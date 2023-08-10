@@ -18,7 +18,7 @@ function App() {
     
     
     <div id="container" >
-      <h1>Team 9 "Craigslist" App</h1>
+      <h1>Team 9 Craigslist Type App</h1>
       <div></div>
       <div id="main-section">
         <Routes>
