@@ -21,6 +21,12 @@ export default function Home() {
 
   return (
     <div>
+      <div><form>
+        <h1>Add New Post</h1>
+
+      </form>
+      
+    <div>
       {posts.map((post) => (
         <div key={post._id}>
           <h2>{post.title}</h2>
@@ -33,6 +39,8 @@ export default function Home() {
 
         </div>
       ))}
+    </div>
+    </div>
     </div>
   );
 }
