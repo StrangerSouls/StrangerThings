@@ -11,7 +11,12 @@ export default function LogInForm({ setToken }) {
   // ... LogInForm component code ...
 
   return (
-    // ... LogInForm JSX ...
+   <div>
+	<h1> Log In </h1>
+	<form>
+
+	</form>
+   </div>
 
   );
 }
