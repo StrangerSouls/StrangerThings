@@ -7,7 +7,7 @@ export default function LogInForm({ setToken }) {
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const [isLogInSuccess]
+  const [isLogInSuccess, setIsLogInSuccess] = useState(false);
 
 
   const handleSubmit = async (event) => {
@@ -35,6 +35,7 @@ export default function LogInForm({ setToken }) {
         const token = result.data.token;
         setToken(token);
         saveTokenSessionStorage(token);
+		setIsLogInSuccess(true);
       } else {
         setError("Invalid username or password");
       }
@@ -46,7 +47,13 @@ export default function LogInForm({ setToken }) {
 
   return (
     <div>
-
+		{isLogInSuccess ? (
+			<div>
+				<h1>Login Successful!</h1>
+				<p> Welcome back, {userName}</p>
+			</div>
+		) : (
+			<div>
       <h1> Log In </h1>
       <form onSubmit={handleSubmit}>
         <label>Username: </label>
@@ -66,6 +73,8 @@ export default function LogInForm({ setToken }) {
         {error && <p>{error}</p>}
         <button type="submit">Log In</button>
       </form>
+	</div>
+	)}
     </div>
   );
 }

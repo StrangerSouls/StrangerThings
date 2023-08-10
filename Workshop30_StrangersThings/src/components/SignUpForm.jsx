@@ -9,6 +9,7 @@ export default function SignUpForm({ setToken }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState(""); 
   const [error, setError] = useState(null);
+  const [isSignupSuccess, setIsSignUpSuccess] = useState(false);
 
  
   async function handleSubmit(event) {
@@ -41,6 +42,7 @@ export default function SignUpForm({ setToken }) {
           const token = result.data.token
           setToken(token);
           saveTokenSessionStorage(token);
+          setIsSignUpSuccess(true);
          
         }
         return result;
@@ -54,6 +56,13 @@ export default function SignUpForm({ setToken }) {
 
   return (
     <div id="container">
+      {isSignupSuccess ? (
+        <div>
+          <h1>Sign Up Successful!</h1>
+          <p>You can now log in with your credentials.</p>
+          </div>
+      ) : (
+        <div>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <label>
@@ -88,6 +97,9 @@ export default function SignUpForm({ setToken }) {
           Submit
         </button>
       </form>
+    </div>
+    
+    )}
     </div>
   )
 }
