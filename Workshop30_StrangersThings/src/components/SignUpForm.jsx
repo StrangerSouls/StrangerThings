@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { BASE_URL } from "../utlities/constants";
+import { BASE_URL } from "../utilities/constants";
 import { saveTokenSessionStorage } from "../auth/sessionStorage";
 
 

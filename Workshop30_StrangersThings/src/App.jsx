@@ -6,6 +6,9 @@ import LogInForm from "./components/LogInForm"
 import NavBar from "./components/NavBar"
 import PostForm from "./components/PostForm"
 import SendMessage from "./components/SendMessage"
+import UserMe from "./components/UserMe"
+//import UserLoader from "./components/UserLoader"
+
 
 
 
@@ -33,6 +36,7 @@ function App() {
           />
           <Route path="/send-message/:postId" element={<SendMessage />} />
           <Route path='/postform' element={<PostForm />} />
+          <Route path="/users/me" element={<UserMe />} />
         
         </Routes>
       </div>

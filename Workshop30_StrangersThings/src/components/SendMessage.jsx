@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { BASE_URL } from '../utlities/constants';
+import { BASE_URL } from '../utilities/constants';
 import { getTokenFromSessionStorage } from '../auth/sessionStorage';
 
 export default function SendMessage() {

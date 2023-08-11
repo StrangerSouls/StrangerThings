@@ -21,6 +21,7 @@ export default function NavBar( {token, setToken} ) {
             </Link></div>
 			)}
 			<div><Link to="/postform">Create New Post</Link></div>
+			<div><Link to="/users/me">My Page</Link></div>
 		</nav>
 	)
 }

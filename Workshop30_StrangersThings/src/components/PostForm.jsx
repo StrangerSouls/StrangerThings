@@ -1,12 +1,12 @@
 import { useState } from 'react'; 
-import { BASE_URL } from '../utlities/constants';
+import { BASE_URL } from '../utilities/constants';
 import { getTokenFromSessionStorage } from '../auth/sessionStorage';
 
 export default function PostForm() {
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
 	const [price, setPrice] = useState("");
-	const [willDeliver, setWillDeliver] = useState("");
+	const [willDeliver, setWillDeliver] = useState(false);
 
 	async function handleSubmit(event) {
 		event.preventDefault();
@@ -66,7 +66,7 @@ export default function PostForm() {
 					<label>Will You Deliver the Item? </label>
 					<select
 					value={willDeliver}
-					onChange={(e) => setWillDeliver(e.target.value === "true")}
+					onChange={(e) => setWillDeliver(e.target.value === "false")}
 					required>
 						<option value="false">No</option>
 						<option value="true">Yes</option>

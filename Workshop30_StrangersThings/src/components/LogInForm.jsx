@@ -1,14 +1,16 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import { saveTokenSessionStorage } from "../auth/sessionStorage";
-import { BASE_URL } from "../utlities/constants";
+import { BASE_URL } from "../utilities/constants";
+import { useNavigate } from 'react-router-dom';
+
 
 export default function LogInForm({ setToken }) {
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [isLogInSuccess, setIsLogInSuccess] = useState(false);
-
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -35,7 +37,8 @@ export default function LogInForm({ setToken }) {
         const token = result.data.token;
         setToken(token);
         saveTokenSessionStorage(token);
-		setIsLogInSuccess(true);
+        setIsLogInSuccess(true);
+        navigate('/users/me');
       } else {
         setError("Invalid username or password");
       }
