@@ -20,6 +20,7 @@ export default function NavBar( {token, setToken} ) {
               Logout
             </Link></div>
 			)}
+			<div><Link to="/postform">Create New Post</Link></div>
 		</nav>
 	)
 }

@@ -21,10 +21,7 @@ export default function Home() {
 
   return (
     <div>
-      <div><form>
-        <h1>Add New Post</h1>
-
-      </form>
+   
       
     <div>
       {posts.map((post) => (
@@ -39,7 +36,6 @@ export default function Home() {
 
         </div>
       ))}
-    </div>
     </div>
     </div>
   );

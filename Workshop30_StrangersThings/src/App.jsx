@@ -4,6 +4,7 @@ import Home from './components/Home'
 import SignUpForm from "./components/SignUpForm"
 import LogInForm from "./components/LogInForm"
 import NavBar from "./components/NavBar"
+import PostForm from "./components/PostForm"
 
 
 
@@ -26,11 +27,9 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} exact/>
           <Route path='/signupform' element={<SignUpForm setToken={setToken}/>}/>
-         
-            <Route
-              path="/login"
-              element={<LogInForm setToken={setToken} />}
-            />
+          <Route path="/login" element={<LogInForm setToken={setToken} />}
+          />
+          <Route path='/postform' element={<PostForm />} />
         </Routes>
       </div>
     </div>
