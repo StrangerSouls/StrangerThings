@@ -38,7 +38,13 @@ export default function Home() {
 
   return (
     <div>
-      {/* <div><UserLoader /></div> */}
+      <div>
+      <form>
+        <label></label>
+        <input type="text"/>
+        <button type="submit">Search</button>
+      </form>
+      </div>
       <div>
         {posts.map((post) => (
           <div key={post._id}>
