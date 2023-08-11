@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { BASE_URL } from '../utlities/constants';
 import { getTokenFromSessionStorage } from '../auth/sessionStorage';
 
@@ -25,7 +26,7 @@ export default function Home() {
   }, [authToken]);
 
   return (
-    <div>  
+    <div>
       <div>
         {posts.map((post) => (
           <div key={post._id}>
@@ -34,17 +35,25 @@ export default function Home() {
             <p>{post.price}</p>
             <p>Location: {post.location}</p>
             <p>Delivery Available? {post.willDeliver ? 'Yes' : 'No'}</p>
-            {authToken && (post.isAuthor || post.messages.length > 0) ? (
-              <div>
-                {/* Display messages for posts created by the logged-in user */}
-                {post.messages.map((message) => (
-                  <div key={message._id}>
-                    <p>Message from: {message.fromUser.username}</p>
-                    <p>Message: {message.content}</p>
-                  </div>
-                ))}
-              </div>
-            ) : null}
+            {authToken && !post.isAuthor && (
+    <div>
+      <Link to={`/send-message/${post._id}`}>
+        <button>Message Seller</button>
+      </Link>
+    </div>
+  )}
+  {authToken && (post.isAuthor || post.messages.length > 0) && (
+    <div>
+      {/* Display messages for posts created by the logged-in user */}
+      {post.messages.map((message) => (
+        <div key={message._id}>
+          <p>Message from: {message.fromUser.username}</p>
+          <p>Message: {message.content}</p>
+        </div>
+      ))}
+    </div>
+)}
+
           </div>
         ))}
       </div>
