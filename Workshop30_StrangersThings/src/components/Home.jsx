@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { BASE_URL } from '../utilities/constants';
 import { getTokenFromSessionStorage } from '../auth/sessionStorage';
 import { handleDeletePost } from '../utilities/deletePost';
-//import UserLoader from './UserLoader';
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
   const authToken = getTokenFromSessionStorage();
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     async function fetchPosts() {
@@ -36,19 +36,27 @@ export default function Home() {
     }
   };
 
+  const filteredPosts = posts.filter(post => (
+    postMatches(post, searchTerm.toLowerCase())
+  ));
+
   return (
     <div>
       <div>
-      <form>
-        <label></label>
-        <input type="text"/>
-        <button type="submit">Search</button>
-      </form>
+        <form>
+          <label>Search: </label>
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button type="submit">Search</button>
+        </form>
       </div>
       <div>
-        {posts.map((post) => (
+        {filteredPosts.map((post) => (
           <div key={post._id}>
-            <h2>{post.title}</h2>            
+            <h2>{post.title}</h2>
             <p>{post.description}</p>
             <h4>Description</h4>
             <p>$ {post.price}</p>
@@ -64,19 +72,17 @@ export default function Home() {
                 </Link>
               </div>
             )}
-            {/* {authToken && (post.isAuthor || post.messages.length > 0) && (
-              <div>
-                {post.messages.map((message) => (
-                  <div key={message._id}>
-                    <p>Message from: {message.fromUser.username}</p>
-                    <p>Message: {message.content}</p>
-                  </div>
-                ))}
-              </div>
-            )} */}
           </div>
         ))}
       </div>
     </div>
+  );
+}
+
+function postMatches(post, text) {
+  return (
+    post.title.toLowerCase().includes(text) ||
+    post.description.toLowerCase().includes(text) ||
+    post.location.toLowerCase().includes(text)
   );
 }

@@ -38,7 +38,7 @@ function UserLoader() {
 			<h3>Messages Received</h3>
 			<ul>
 			{user.messages
-				.filter(message => message.fromUser !== user._id) // Filter messages sent by others
+				.filter(message => message.fromUser._id !== user._id) // Filter messages sent by others
 				.map(message => (
 				<div key={message._id}>
 					<p>From: {message.fromUser.username}</p>
