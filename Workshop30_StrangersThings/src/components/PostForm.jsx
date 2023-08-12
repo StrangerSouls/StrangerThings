@@ -6,7 +6,7 @@ export default function PostForm() {
 	const [title, setTitle] = useState("");
 	const [description, setDescription] = useState("");
 	const [price, setPrice] = useState("");
-	const [willDeliver, setWillDeliver] = useState(false);
+	const [willDeliver, setWillDeliver] = useState();
 
 	async function handleSubmit(event) {
 		event.preventDefault();
@@ -66,7 +66,7 @@ export default function PostForm() {
 					<label>Will You Deliver the Item? </label>
 					<select
 					value={willDeliver}
-					onChange={(e) => setWillDeliver(e.target.value === "")}
+					onChange={(e) => setWillDeliver(e.target.value)}
 					required>
 						<option value="false">No</option>
 						<option value="true">Yes</option>
