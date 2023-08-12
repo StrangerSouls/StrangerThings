@@ -59,7 +59,7 @@ export default function PostForm() {
 					value={description}
 					onChange={(e) => setDescription(e.target.value)}
 					required />
-					<label>Price: </label>
+					<label>Price: $</label>
 					<input
 					type="number"
 					value={price}

@@ -19,6 +19,7 @@ export default function Home() {
         });
         const data = await response.json();
         setPosts(data.data.posts);
+        console.log(data);
       } catch (error) {
         console.log(`Error fetching all posts`);
       }
