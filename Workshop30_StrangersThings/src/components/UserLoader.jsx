@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getUserData } from "../utilities/userData";
 import { getTokenFromSessionStorage } from '../auth/sessionStorage';
+import { Link } from "react-router-dom";
 
 function UserLoader() {
 	const [user, setUser] = useState(null);
@@ -21,7 +22,7 @@ function UserLoader() {
 		<div>
 		{user ? (
 		<div>
-			<h2>Welcome {user.username}</h2>
+			<h2>Welcome, {user.username}</h2>
 			<h3>Your Posts</h3>
 			<ul>
 			{user.posts
@@ -50,18 +51,18 @@ function UserLoader() {
 			<h3>Messages You Sent</h3>
 			<ul>
 			{user.messages
-				.filter(message => message.fromUser._id === user._id) // Filter messages by sender's _id
-				.map(message => (
-				<div key={message._id}>
-					<p>From: {message.fromUser.username}</p>
-					<p>Content: {message.content}</p>
-					<p>Post: {message.post.title}</p>
-				</div>
-				))}
+            .filter(message => message.post && message.post.author._id !== user._id) // Filter messages sent by the user
+            .map(message => (
+              <div key={message._id}>
+                <p>To User: {message.post.author ? message.post.author.username : 'Unknown User'}</p>
+                <p>Content: {message.content}</p>
+                <p>Post: {message.post ? message.post.title : 'Unknown Post'}</p>
+              </div>
+            ))}
 			</ul>
 					</div>
 		) : (
-		<p>You are not logged in. Please Log in to view this page.
+		<p>You are not logged in. Please <Link to="/login">Log in</Link> to view this page.
 
 		</p>
 		)}
