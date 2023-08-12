@@ -66,7 +66,7 @@ export default function PostForm() {
 					<label>Will You Deliver the Item? </label>
 					<select
 					value={willDeliver}
-					onChange={(e) => setWillDeliver(e.target.value === "false")}
+					onChange={(e) => setWillDeliver(e.target.value === "")}
 					required>
 						<option value="false">No</option>
 						<option value="true">Yes</option>
