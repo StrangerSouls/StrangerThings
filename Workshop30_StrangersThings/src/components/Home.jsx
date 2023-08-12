@@ -7,6 +7,7 @@ import { handleDeletePost } from '../utilities/deletePost';
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState([]);
   const authToken = getTokenFromSessionStorage();
 
   useEffect(() => {
@@ -38,13 +39,15 @@ export default function Home() {
 
   return (
     <div>
-      <div>
-      <form>
-        <label></label>
-        <input type="text"/>
-        <button type="submit">Search</button>
-      </form>
-      </div>
+      
+      
+        <input
+        type="text"
+        placeholder="Search posts..."
+        value={searchTerm}/>
+        onChange={(e) => setSearchTerm(e.target.value)}
+      <button type="submit">Search</button>
+     
       <div>
         {posts.map((post) => (
           <div key={post._id}>
