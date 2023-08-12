@@ -45,7 +45,7 @@ export default function Home() {
     <div>
       <div>
         <form>
-          <label>Search: </label>
+          <label>Search Posts: </label>
           <input
             type="text"
             value={searchTerm}
@@ -60,7 +60,7 @@ export default function Home() {
             <h2>{post.title}</h2>
             <p>{post.description}</p>
             <h4>Description</h4>
-            <p>$ {post.price}</p>
+            <p>${post.price}</p>
             <p>Location: {post.location}</p>
             <p>Delivery Available? {post.willDeliver ? 'Yes' : 'No'}</p>
             {authToken && post.isAuthor && (
