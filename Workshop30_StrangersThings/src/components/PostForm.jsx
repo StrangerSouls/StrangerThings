@@ -7,6 +7,7 @@ export default function PostForm() {
 	const [description, setDescription] = useState("");
 	const [price, setPrice] = useState("");
 	const [willDeliver, setWillDeliver] = useState();
+	const [location, setLocation] = useState();
 
 	async function handleSubmit(event) {
 		event.preventDefault();
@@ -24,6 +25,7 @@ export default function PostForm() {
 							title: title,
 							description: description,
 							price: price,
+							location: location,
 							willDeliver: willDeliver,
 						}
 					})
@@ -62,6 +64,12 @@ export default function PostForm() {
 					type="number"
 					value={price}
 					onChange={(e) => setPrice(e.target.value)}
+					required />
+					<label>Location: </label>
+					<input
+					type="text"
+					value={location}
+					onChange={(e) => setLocation(e.target.value)} 
 					required />
 					<label>Will You Deliver the Item? </label>
 					<select
