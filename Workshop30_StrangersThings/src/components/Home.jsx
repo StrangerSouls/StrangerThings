@@ -4,6 +4,8 @@ import { BASE_URL } from '../utilities/constants';
 import { getTokenFromSessionStorage } from '../auth/sessionStorage';
 import { handleDeletePost } from '../utilities/deletePost';
 
+import './Home.css';
+
 export default function Home() {
   const [posts, setPosts] = useState([]);
   const authToken = getTokenFromSessionStorage();
@@ -51,12 +53,12 @@ export default function Home() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button type="submit">Search</button>
+          <button type="submit" className='search-button'>Search</button>
         </form>
       </div>
-      <div>
+      <div className="post-container">
         {filteredPosts.map((post) => (
-          <div key={post._id}>
+          <div key={post._id} className="post">
             <h2>{post.title}</h2>
             <p>{post.description}</p>
             <h4>Description</h4>
@@ -64,12 +66,12 @@ export default function Home() {
             <p>Location: {post.location}</p>
             <p>Delivery Available? {post.willDeliver ? 'Yes' : 'No'}</p>
             {authToken && post.isAuthor && (
-              <button onClick={() => handlePostDeletion(post._id)}>Delete Post</button>
+              <button onClick={() => handlePostDeletion(post._id)} className="delete-button">Delete Post</button>
             )}
             {authToken && !post.isAuthor && (
               <div>
                 <Link to={`/send-message/${post._id}`}>
-                  <button>Message Seller</button>
+                  <button className="message-button">Message Seller</button>
                 </Link>
               </div>
             )}

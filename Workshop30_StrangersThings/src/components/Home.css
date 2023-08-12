@@ -1,0 +1,28 @@
+
+
+.post-container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	max-width: 40%;
+	margin: 0 auto;
+  }
+  
+  .post {
+	border: 2px solid #ccc;
+	padding: 20px;
+	border-radius: 8px;
+  }
+  
+  .message-button {
+	background-color: rgb(215, 185, 243);
+  }
+
+  .delete-button {
+	background-color: rgb(242, 107, 107);
+  }
+
+  .search-button {
+	margin-bottom: 2rem;
+	margin-left: 1rem;
+  }

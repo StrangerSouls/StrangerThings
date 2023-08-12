@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { BASE_URL } from '../utilities/constants';
 import { getTokenFromSessionStorage } from '../auth/sessionStorage';
 
+import'./PostForm.css'
+
 export default function PostForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -53,56 +55,71 @@ export default function PostForm() {
   }
 
   return (
-    <div>
+    <div className="post-form-container">
       {isPostSuccess && (
         <div>
           <p>Your post was created successfully!</p>
         </div>
       )}
-
+  
       <h1>Create Post</h1>
       <div>
         <form onSubmit={handleSubmit}>
-          <label>Title: </label>
+          <label className="post-form-title">Title: </label>
           <input
+            className="post-form-title-input"
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
           />
-          <label>Description: </label>
-          <input
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-          <label>Price: $</label>
-          <input
-            type="number"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            required
-          />
-          <label>Location: </label>
-          <input
-            type="text"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)} 
-            required
-          />
-          <label>Will You Deliver the Item? </label>
-          <select
-            value={willDeliver}
-            onChange={(e) => setWillDeliver(e.target.value)}
-            required
-          >
-            <option value="false">No</option>
-            <option value="true">Yes</option>
-          </select>
-          <button type="submit">Submit</button>
+  
+          <div className="post-form-input-group">
+            <label className="post-form-label">Description: </label>
+            <input
+              id="description"
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            />
+          </div>
+  
+          <div className="post-form-input-group">
+            <label className="post-form-label">Price: $</label>
+            <input
+              type="number"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              required
+            />
+          </div>
+  
+          <div className="post-form-input-group">
+            <label className="post-form-label">Location: </label>
+            <input
+              type="text"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)} 
+              required
+            />
+          </div>
+  
+          <div className="post-form-input-group">
+            <label className="post-form-label">Will You Deliver the Item? </label>
+            <select
+              value={willDeliver}
+              onChange={(e) => setWillDeliver(e.target.value)}
+              required
+            >
+              <option value="false">No</option>
+              <option value="true">Yes</option>
+            </select>
+          </div>
+  
+          <button className="post-form-button" type="submit">Submit</button>
         </form>
       </div>
     </div>
   );
-}
+      }  
